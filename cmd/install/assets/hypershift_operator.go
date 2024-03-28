@@ -6,7 +6,6 @@ import (
 	"time"
 
 	hyperv1 "github.com/openshift/hypershift/api/hypershift/v1beta1"
-	cmdutil "github.com/openshift/hypershift/cmd/util"
 	"github.com/openshift/hypershift/pkg/version"
 	"github.com/openshift/hypershift/support/config"
 	"github.com/openshift/hypershift/support/images"
@@ -1803,7 +1802,6 @@ func (o HyperShiftPullSecret) Build() *corev1.Secret {
 		ObjectMeta: metav1.ObjectMeta{
 			Namespace: o.Namespace,
 			Name:      PullSecretName,
-			Labels:    map[string]string{cmdutil.DeleteWithClusterLabelName: "true"},
 		},
 		Data: map[string][]byte{
 			".dockerconfigjson": o.PullSecretBytes,
